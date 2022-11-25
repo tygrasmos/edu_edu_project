@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .mainStyle {
+            border: 1px solid steelblue;
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border: 1px solid steelblue;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col1{
+            width: 20px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col2{
+            width: 40px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col3{
+            width: 50px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col4{
+            width: 100px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trGreen{
+            background: #b3ecaf; /* Цвет фона зеленый */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trYellow{
+            background: #efeca4; /* Цвет фона желтый */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trRed{
+            background: #f3a6b8; /* Цвет фона красный */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .mainStyle tr td, th {
+            padding: 5px;
+            border: 1px solid steelblue;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .mainStyle td:last-child, td:first-child {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            width: 50px;
+        }
+
+        .h3Style {
+            padding: 5px;
+            width: 500px;
+            border: 1px solid steelblue;
+            background-color: #52cbb9;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .linkStyle {
+            padding: 5px;
+            border: 1px solid steelblue;
+            background-color: #ce7f54;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 150%;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h3 class="h3Style">
+    Перейти к списку персонажей
+</h3>
+
+<td>
+    <a class="linkStyle" th:href="@{/characters}" href="characterList.html">Go To Character List</a>
+</td>
+
+<h3 class="h3Style">
+    Перейти к списку зарегистрированных пользователей
+</h3>
+
+<td>
+    <a class="linkStyle" th:href="@{/user/userList}" href="userList.html">Go To User List</a>
+</td>
+
+<h3 class="h3Style">
+    Перейти к списку варки реакций
+</h3>
+
+<td>
+    <a class="linkStyle" th:href="@{/industry/reactions/byTime}" href="industryAllReactionList.html">Go To Reaction List</a>
+</td>
+
+<h3 class="h3Style">
+    Перейти к списку производства
+</h3>
+
+<td>
+    <a class="linkStyle" th:href="@{/industry/production/ByTime}" href="industryAllProductionList.html">Go To Production List</a>
+</td>
+
+<h3 class="h3Style">
+    Перейти к списку исследований
+</h3>
+
+<td>
+    <a class="linkStyle" th:href="@{/industry/bpoJob/byTime}" href="industryAllBpoJobList.html">Go To BPO Job List</a>
+</td>
+
+
+</body>
+</head>
+</html>
