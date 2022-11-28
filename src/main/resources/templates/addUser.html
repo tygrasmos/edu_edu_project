@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New User</title>
+
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .mainStyle {
+            border: 1px solid steelblue;
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border: 1px solid steelblue;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col1{
+            width: 20px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col2{
+            width: 40px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col3{
+            width: 50px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col4{
+            width: 100px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trGreen{
+            background: #b3ecaf; /* Цвет фона зеленый */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trYellow{
+            background: #efeca4; /* Цвет фона желтый */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trRed{
+            background: #f3a6b8; /* Цвет фона красный */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .mainStyle tr td, th {
+            padding: 5px;
+            border: 1px solid steelblue;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .mainStyle td:last-child, td:first-child {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            width: 50px;
+        }
+
+        .h3Style {
+            padding: 5px;
+            width: 500px;
+            border: 1px solid steelblue;
+            background-color: #52cbb9;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .linkStyle {
+            padding: 5px;
+            border: 1px solid steelblue;
+            background-color: #ce7f54;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h3 class="author">
+    Добавление нового пользователя
+</h3>
+
+<table class="mainStyle">
+    <!--/*@thymesVar id="userDto" type="ru.mos.tygras.eve.planned_assistance.dto.UserDto"*/-->
+    <form id="add-form" action="addUser.html" th:action="@{/user/add}" th:method="post" th:object="${userDto}">
+
+        <div class="row">
+            <input id="user-id-input" name="id" type="text" readonly="readonly" hidden="true" th:value="*{id}" value="ID"/>
+        </div>
+
+        <div class="row">
+            <label for="login-input">Login:</label>
+            <input id="login-input" name="login" type="text" th:value="*{login}" value="login"/>
+            <div class="errors" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Wrong author name error</div>
+        </div>
+
+        <div class="row">
+            <label for="password-input">Password:</label>
+            <input id="password-input" name="password" type="password" th:value="*{password}" value="password" p/>
+            <div class="errors" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Wrong author name error</div>
+        </div>
+
+        <div class="row">
+            <button type="submit" th:text="save">Save</button>
+            <a href="mainPage.html" th:href="@{/main}"><button type="button" th:text="cancel">Cancel</button></a>
+        </div>
+
+    </form>
+    </tbody>
+</table>
+
+<h3 class="h3Style">
+    Перейти на стартовую страницу
+</h3>
+
+<td>
+    <a class="linkStyle" th:href="@{/}" href="indexPage.html">Перейти на стартовую страницу</a>
+</td>
+
+</body>
+</html>

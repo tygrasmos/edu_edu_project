@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of All Character Reaction job</title>
+
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .mainStyle {
+            border: 1px solid steelblue;
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border: 1px solid steelblue;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col1{
+            width: 20px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col2{
+            width: 40px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col3{
+            width: 50px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col4{
+            width: 100px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trGreen{
+            background: #b3ecaf; /* Цвет фона зеленый */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trYellow{
+            background: #efeca4; /* Цвет фона желтый */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trRed{
+            background: #f3a6b8; /* Цвет фона красный */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .mainStyle tr td, th {
+            padding: 5px;
+            border: 1px solid steelblue;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .mainStyle td:last-child, td:first-child {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            width: 50px;
+        }
+
+        .h3Style {
+            padding: 5px;
+            width: 500px;
+            border: 1px solid steelblue;
+            background-color: #52cbb9;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .reactionJobsLink {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            /* font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */
+            font-size: 150%; /* Размер шрифта в процентах */
+        }
+
+        .linkStyle {
+            padding: 5px;
+            border: 1px solid steelblue;
+            background-color: #ce7f54;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+
+<h3 class="h3Style">
+    Список всех работ для всех чаров
+</h3>
+
+<table class="mainStyle">
+    <thread>
+        <tr>
+            <th>Character Name</th>
+            <th>Q Empty</th>
+        </tr>
+    </thread>
+
+    <tbody>
+    <!--/*@thymesVar id="jobs" type="java.util.List<ru.mos.tygras.eve.planned_assistance.dto.CharacterDto>"*/-->
+    <tr th:each="job : ${jobs}">
+        <td th:text="${job.characterName}">tygras123lab1</td>
+        <td th:text="${job.id}">2</td>
+        <table class="mainStyle">
+            <thread>
+                <tr>
+                    <th>Time Left</th>
+                    <th>Status job</th>
+                    <th>Runs</th>
+                    <th>Blueprint Type Name</th>
+                    <th>Station Id</th>
+                    <th>Start job</th>
+                    <th>End job</th>
+                    <th>Project Name</th>
+                </tr>
+            </thread>
+            <tbody>
+            <tr th:each="line : ${job.jobDtoList}">
+                <td th:text="${line.duration}">1D 14:25:09</td>
+                <td th:text="${line.status}">inLine</td>
+                <td th:text="${line.runs}">25</td>
+                <td th:text="${line.blueprintType.typeName}">Ceramic Powder Reaction Formula</td>
+                <td th:text="${line.stationId}">12341234</td>
+                <td th:text="${line.startDateTime}">2022.11.17 07:49</td>
+                <td th:text="${line.endDateTime}">2022.11.19 07:49</td>
+                <td th:text="${line.projectName}">Golem</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

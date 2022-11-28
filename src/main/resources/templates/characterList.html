@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List of Character</title>
+  <style type="text/css">
+    body {
+      padding: 50px;
+    }
+
+    .mainStyle {
+      border: 1px solid steelblue;
+      width: 600px;
+      table-layout: fixed;
+      border-collapse: collapse;
+      border: 1px solid steelblue;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .col1{
+      width: 20px;
+      text-align: center;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .col2{
+      width: 40px;
+      text-align: center;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .col3{
+      width: 50px;
+      text-align: center;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .col4{
+      width: 100px;
+      text-align: center;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .trGreen{
+      background: #b3ecaf; /* Цвет фона зеленый */
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .trYellow{
+      background: #efeca4; /* Цвет фона желтый */
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .trRed{
+      background: #f3a6b8; /* Цвет фона красный */
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .mainStyle tr td, th {
+      padding: 5px;
+      border: 1px solid steelblue;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .mainStyle td:last-child, td:first-child {
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      width: 50px;
+    }
+
+    .h3Style {
+      padding: 5px;
+      width: 500px;
+      border: 1px solid steelblue;
+      background-color: #52cbb9;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .linkStyle {
+      padding: 5px;
+      border: 1px solid steelblue;
+      background-color: #ce7f54;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+  </style>
+
+</head>
+<body>
+
+<h3 class="h3Style">
+  Список персонажей
+</h3>
+
+<table class="mainStyle">
+  <thead>
+  <tr>
+    <th class="col2">Character ID</th>
+    <th class="col3">Character Name</th>
+    <th class="col2">Action</th>
+    <th class="col2">Action</th>
+    <th class="col2">Action</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <!--/*@thymesVar id="characters" type="java.util.List<ru.mos.tygras.eve.planned_assistance.dto.CharacterDto>"*/-->
+  <tr th:each="character : ${characters}">
+    <td  class="col2" th:text="${character.id}">1</td>
+    <td class="col3">
+      <a th:href="@{/character/info(id=${character.id})}" href="characterInfo.html" th:text="${character.characterName}">Character Name</a>
+    </td>
+    <td  class="col2">
+      <a th:href="@{/character/planetary(id=${character.id})}" href="planetaryCharacter.html">planetary</a>
+    </td>
+    <td  class="col2">
+      <a th:href="@{/character/industry(id=${character.id})}" href="industryCharacter.html">industry</a>
+    </td>
+    <td  class="col2">
+      <a th:href="@{/character/delete(id=${character.id})}" href="deleteCharacter.html">delete</a>
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+
+<h3 class="h3Style">
+  Добавить нового персонажа
+</h3>
+
+<td>
+  <a class="linkStyle" th:href="@{/character/add}" href="addCharacter.html">Go To Add Character Page</a>
+</td>
+
+<h3 class="h3Style">
+  Перейти на стартовую страницу
+</h3>
+
+<td>
+  <a class="linkStyle" th:href="@{/main}" href="mainPage.html">Перейти на стартовую страницу</a>
+</td>
+
+</body>
+</head>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Character</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .mainStyle {
+            border: 1px solid steelblue;
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border: 1px solid steelblue;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col1{
+            width: 20px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col2{
+            width: 40px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col3{
+            width: 50px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col4{
+            width: 100px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trGreen{
+            background: #b3ecaf; /* Цвет фона зеленый */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trYellow{
+            background: #efeca4; /* Цвет фона желтый */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trRed{
+            background: #f3a6b8; /* Цвет фона красный */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .mainStyle tr td, th {
+            padding: 5px;
+            border: 1px solid steelblue;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .mainStyle td:last-child, td:first-child {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            width: 50px;
+        }
+
+        .h3Style {
+            padding: 5px;
+            border: 1px solid steelblue;
+            background-color: #52cbb9;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .linkStyle {
+            padding: 5px;
+            border: 1px solid steelblue;
+            background-color: #ce7f54;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h3 class="h3Style">
+    Добавление нового персонажа
+</h3>
+<!--/*@thymesVar id="char" type="java.lang.String"*/-->
+ <form id="add-form" action="addCharacter.html" th:action="@{/character/add}" th:method="post" th:object="${char}">
+     <div class="row">
+         <button type="submit" th:text="add">Add</button>
+         <a href="characterList.html" th:href="@{/characters}"><button type="button" th:text="cancel">Cancel</button></a>
+     </div>
+ </form>
+
+
+<h3 class="h3Style">
+    Перейти на стартовую страницу
+</h3>
+
+<td>
+    <a class="linkStyle" th:href="@{/main}" href="mainPage.html">Go To Start Page</a>
+</td>
+
+</body>
+</head>
+</html>

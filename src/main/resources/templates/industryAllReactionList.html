@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of All Reaction job</title>
+
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .mainStyle {
+            border: 1px solid steelblue;
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border: 1px solid steelblue;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col1{
+            width: 20px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col2{
+            width: 40px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col3{
+            width: 50px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .col4{
+            width: 100px;
+            text-align: center;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trGreen{
+            background: #b3ecaf; /* Цвет фона зеленый */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trYellow{
+            background: #efeca4; /* Цвет фона желтый */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .trRed{
+            background: #f3a6b8; /* Цвет фона красный */
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .mainStyle tr td, th {
+            padding: 5px;
+            border: 1px solid steelblue;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .mainStyle td:last-child, td:first-child {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            width: 50px;
+        }
+
+        .h3Style {
+            padding: 5px;
+            width: 500px;
+            border: 1px solid steelblue;
+            background-color: #52cbb9;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .linkStyle {
+            padding: 5px;
+            border: 1px solid steelblue;
+            background-color: #ce7f54;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 150%;
+        }
+
+        .reactionJobsLink {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            /* font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */
+            font-size: 150%; /* Размер шрифта в процентах */
+        }
+
+    </style>
+</head>
+<body>
+
+<td>
+    <a class="linkStyle" th:href="@{/industry/reactions/byChar}" href="industryAllReactionList.html">Сортировка по персонажам</a>
+</td>
+
+<td>
+    <a class="linkStyle" th:href="@{/industry/reactions/byProject}" href="industryAllReactionList.html">Сортировка по проектам</a>
+</td>
+
+<td>
+    <a class="linkStyle" th:href="@{/industry/reactions/byTime}" href="industryAllReactionList.html">Сортировка по времени до окончания работ</a>
+</td>
+
+<h3 class="h3Style">
+    Список всех реакций для всех персонажей
+</h3>
+
+<table class="mainStyle">
+    <thread>
+        <tr>
+            <th class="col2">Character Name</th>
+            <th class="col2">Time Left</th>
+            <th class="col1">Job Type</th>
+            <th class="col1">Status job</th>
+            <th class="col1">Runs</th>
+            <th class="col4">Blueprint Type Name</th>
+            <th class="col4">Station</th>
+            <th class="col3">Start job</th>
+            <th class="col3">End job</th>
+            <th class="col2">Project Name</th>
+        </tr>
+    </thread>
+
+    <tbody>
+    <!--/*@thymesVar id="allReactionList" type="java.util.List<ru.mos.tygras.eve.planned_assistance.dto.CharacterIndustryJobDto>"*/-->
+    <tr th:each="job : ${allReactionList}"
+        th:styleappend="${job.hourTimeLeft} < 3 ? 'background : #efeca4; font-size: 75%' : 'background : #b3ecaf;; font-size: 75%'">
+        <td class="col2" th:text="${job.getCharacter().characterName}">tygras123lab1</td>
+        <td class="col2" th:text="${job.timeLeft}">1D 14:25:09</td>
+        <td class="col1" th:text="${job.activity.activityName}">reaction</td>
+        <td class="col1" th:text="${job.status}">active</td>
+        <td class="col1" th:text="${job.runs}">25</td>
+        <td class="col4" th:text="${job.blueprintType.typeName}">Ceramic Powder Reaction Formula</td>
+        <td class="col4" th:text="${job.stationId}">12341234</td>
+        <td class="col3" th:text="${job.startDateTime}">2022.11.17 07:49</td>
+        <td class="col3" th:text="${job.endDateTime}">2022.11.19 07:49</td>
+        <td class="col2" th:text="${job.projectName}">Golem</td>
+    </tr>
+    </tbody>
+
+</table>
+
+<h3 class="h3Style">
+    Перейти на главную
+</h3>
+
+<td>
+    <a class="linkStyle" th:href="@{/main}" href="mainPage.html">Перейти на главную страницу</a>
+</td>
+
+</body>
+</html>

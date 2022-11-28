@@ -1,0 +1,25 @@
+request :
+  authCode :
+    url: https://login.eveonline.com
+    path: /v2/oauth/authorize/
+    redirectUri: http://localhost:8080/callback/
+  accessToken :
+    url: https://login.eveonline.com
+    path: /v2/oauth/token
+    jwks-url: https://login.eveonline.com/oauth/jwks
+  authRequest :
+    url: https://esi.evetech.net
+    path: /latest
+
+secured:
+  key-store: security/keystore.jks
+  key-store-password: minimum
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/database_eve
+    username: postgres
+    password:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
